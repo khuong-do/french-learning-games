@@ -25,3 +25,17 @@ for p in r.rglob('*.html'):
 for p in r.rglob('*.js'):subprocess.run(['node','--check',str(p)],check=True,capture_output=True);n+=1
 
 print('PASS all 13 HTML local links/assets and',n,'JS syntax checks')
+
+# Every content page uses the same visible Facebook footer and settings wrapper.
+import re
+footers=[]
+for p in r.rglob('*.html'):
+ if 'jeux' in p.parts:continue
+ text=p.read_text()
+ footer=re.search(r'<footer class="llg-footer".*?</footer>',text,re.S)
+ assert footer,p
+ assert text.count('https://www.facebook.com/kunido/')==1,p
+ assert 'class="llg-analytics-settings"' in text,p
+ footers.append(footer.group())
+assert len(footers)==11 and len(set(footers))==1
+print('PASS identical Facebook footer and conditional preferences on all 11 content pages')
