@@ -4,10 +4,10 @@
 
 | Người phụ trách | Chương trình | Thư mục |
 | --- | --- | --- |
-| Phúc | DELF A2 — đọc hiểu | `french/delf-a2/` |
+| Phúc | DELF A2 — đọc hiểu và viết | `french/delf-a2/` |
 | Khuong | TOEIC — Reading | `english/toeic/` |
 
-Ưu tiên Reading ở giai đoạn đầu. Listening bổ sung sau; Speaking và Writing chưa thuộc phạm vi hiện tại.
+Ưu tiên Reading và Writing ở giai đoạn đầu. Listening và Speaking chưa thuộc phạm vi hiện tại.
 
 Trang chủ chỉ giữ French Games và English Games. Mỗi trang ngôn ngữ giữ các game hiện có và liên kết tới chương trình tương ứng. Chưa tạo thư mục game rỗng hoặc nút chơi không hoạt động.
 
@@ -24,7 +24,7 @@ Trang chủ chỉ giữ French Games và English Games. Mỗi trang ngôn ngữ 
 - Dùng lại footer Facebook của trang chương trình, liên kết `https://www.facebook.com/kunido/`.
 - Tích hợp GA4 `G-JXNH96HZ0Q` qua `shared/analytics.js`, giữ cơ chế consent hiện có; không chèn thêm gtag.
 - Dùng các sự kiện `game_start`, `mission_complete`, `game_complete`, `game_replay`, `share_result` khi hành động tương ứng thật sự xảy ra. Kiểm tra API hiện có trước khi dùng; tránh gửi `game_complete` hai lần nếu hệ thống rewards đã gửi.
-- Mỗi game có hướng dẫn, phản hồi đúng/sai, giải thích đáp án và nút chơi lại. Nội dung phục vụ đọc hiểu, không chỉ đoán từ.
+- Mỗi game có hướng dẫn, phản hồi đúng/sai, giải thích đáp án và nút chơi lại. Bài đọc kiểm tra khả năng hiểu văn bản; bài viết có mục đích giao tiếp rõ ràng và tiêu chí tự đánh giá.
 - Liên kết dùng đường dẫn tương đối để hoạt động trên GitHub Pages; ảnh có mô tả phù hợp; thao tác được bằng bàn phím.
 
 ## Kiểm tra

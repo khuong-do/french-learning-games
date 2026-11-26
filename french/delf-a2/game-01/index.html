@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102d58">
+<title>Lễ hội ở Belle-Rive · DELF A2</title>
+<meta name="description" content="Chiến dịch sáu nhiệm vụ luyện đọc hiểu và viết tiếng Pháp trình độ A2.">
+<script>
+try {
+  document.documentElement.lang = localStorage.getItem('delfA2Language') === 'en' ? 'en' : 'vi';
+} catch (error) {
+  console.warn('Unable to read the saved DELF A2 language preference.', error);
+  document.documentElement.lang = 'vi';
+}
+</script>
+<link rel="stylesheet" href="style.css">
+<script src="../../../shared/analytics.js"></script>
+<script src="../../../shared/rewards.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="back-link" href="../index.html" id="backLink">← DELF A2</a>
+  <span class="brand">🌍 LEARN &amp; PLAY</span>
+  <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language to English">English</button>
+</header>
+<main>
+  <section class="hero" aria-labelledby="pageTitle">
+    <p class="eyebrow" id="eyebrow">DELF A2 · CHIẾN DỊCH ĐỌC VÀ VIẾT</p>
+    <h1 id="pageTitle">🏮 Lễ hội ở Belle-Rive</h1>
+    <p class="hero-subtitle" id="pageSubtitle">Chiến dịch 6 nhiệm vụ · Luyện đọc hiểu và viết tiếng Pháp A2</p>
+  </section>
+  <section class="game-status" id="gameStatus" aria-label="Tiến độ trò chơi">
+    <div class="status-row"><span id="stage">Mở đầu</span><strong id="score">⭐ Điểm: 0 / 50</strong></div>
+    <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Tiến độ nhiệm vụ" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </section>
+  <section class="game-panel" id="game" aria-live="polite" aria-atomic="false"></section>
+  <p class="sr-only" id="languageAnnouncement" aria-live="polite"></p>
+</main>
+<footer class="llg-footer" style="text-align:center;color:#597198;font:0.9rem system-ui,Arial,sans-serif;margin:28px auto 0;padding:0 16px 24px">Language Learning Games · #KhuongDo<div style="margin-top:12px"><a href="https://www.facebook.com/kunido/" target="_blank" rel="noopener noreferrer" style="color:#1877f2;text-decoration:none;font-weight:650">ⓕ Retrouvez-moi sur Facebook ↗</a></div></footer>
+<div class="llg-analytics-settings" style="text-align:center;padding:6px 12px 20px"><button type="button" id="analyticsSettings" onclick="llgAnalyticsSettings()" style="background:transparent;border:0;text-decoration:underline;color:#47658d;cursor:pointer">Préférences d’analyse</button></div>
+<script src="episodes.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

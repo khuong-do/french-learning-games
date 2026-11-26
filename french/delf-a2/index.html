@@ -1,12 +1,21 @@
 <!doctype html>
-<html lang="fr">
+<html lang="vi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DELF A2 · Compréhension écrite · #KhuongDo</title>
-<meta name="description" content="Des mini-jeux de lecture pour progresser vers le DELF A2.">
+<title>DELF A2 · Đọc và viết tiếng Pháp · #KhuongDo</title>
+<meta name="description" content="Luyện đọc hiểu và viết tiếng Pháp trình độ A2 qua các trò chơi tương tác.">
+<script>
+try {
+  document.documentElement.lang = localStorage.getItem('delfA2Language') === 'en' ? 'en' : 'vi';
+} catch (error) {
+  console.warn('Unable to read the saved DELF A2 language preference.', error);
+  document.documentElement.lang = 'vi';
+}
+</script>
 <style>*{box-sizing:border-box}body{margin:0;background:#f2f6fc;color:#142b53;font-family:system-ui,Arial,sans-serif}.wrap{max-width:920px;margin:auto;padding:30px 18px 55px}header{text-align:center;padding:25px 5px}h1{font-size:clamp(2rem,5vw,3rem);margin:12px 0}.sub{color:#5b7291}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:20px}.card{background:white;border:1px solid #dce5f2;border-radius:20px;overflow:hidden;box-shadow:0 8px 28px #173c7612}.card img{width:100%;aspect-ratio:3/2;object-fit:cover}.content{padding:23px}.content h2{margin:0 0 10px}.content p{color:#5b7291}.btn{display:block;text-align:center;text-decoration:none;background:#193d7d;color:white;border-radius:12px;padding:14px;font-weight:750}.btn:hover{background:#2860b3}.emoji{font-size:58px;text-align:center;padding:40px 10px 10px}footer{text-align:center;color:#657a97;margin-top:40px}a.back{display:inline-block;margin:0 0 24px;color:#194d95}
 main{line-height:1.65}.status{display:inline-block;padding:5px 12px;border-radius:20px;background:#eaf0fb;color:#193d7d;font-weight:650;font-size:.9rem}a:focus-visible{outline:3px solid #3276d2;outline-offset:4px}.content h3{margin-bottom:8px}
+.language-toggle{float:right;padding:8px 12px;border:1px solid #c9d8ec;border-radius:10px;background:#fff;color:#193d7d;font:700 14px system-ui;cursor:pointer}.language-toggle:focus-visible{outline:3px solid #3276d2;outline-offset:3px}
 </style>
 <script src="../../shared/analytics.js"></script>
 <script src="../../shared/rewards.js"></script>
@@ -14,24 +23,84 @@ main{line-height:1.65}.status{display:inline-block;padding:5px 12px;border-radiu
 <body>
 <div class="wrap">
 <header>
+<button type="button" class="language-toggle" id="languageToggle" aria-label="Chuyển ngôn ngữ sang tiếng Anh">English</button>
 <div class="sub">🌍 LEARN & PLAY · #KhuongDo</div>
 <h1>DELF A2</h1>
-<p class="sub">Lire, comprendre et progresser en français</p>
+<p class="sub" id="subtitle">Đọc hiểu, viết và tiến bộ trong tiếng Pháp</p>
 </header>
-<nav aria-label="Navigation"><a class="back" href="../index.html">Tous les jeux français</a></nav>
+<nav aria-label="Điều hướng" id="navigation"><a class="back" href="../index.html" id="backLink">Tất cả trò chơi tiếng Pháp</a></nav>
 <main>
-<section class="card content" aria-labelledby="reading-title">
-<span class="status">Bientôt disponible</span>
-<h2 id="reading-title">Compréhension écrite</h2>
-<p>Entraînez-vous à comprendre des messages, des annonces et de courts textes du quotidien.</p>
-<h3>Les premiers mini-jeux sont en préparation</h3>
-<p>Ils apparaîtront ici dès leur publication. En attendant, découvrez les jeux de français déjà disponibles.</p>
-<a class="btn" href="../index.html">Découvrir les jeux disponibles</a>
+<section class="card content" aria-labelledby="mission-title">
+<span class="status" id="status">Đã mở</span>
+<h2 id="mission-title">Chiến dịch · Lễ hội ở Belle-Rive</h2>
+<p id="description">Sáu nhiệm vụ truyện kết hợp đọc hiểu và viết tiếng Pháp, kèm bài tổng ôn DELF A2 về đọc và viết. Có giao diện tiếng Việt và tiếng Anh.</p>
+<h3 id="readyTitle">Sẵn sàng giúp Belle-Rive tổ chức lễ hội?</h3>
+<p id="readyText">Đọc tin nhắn, áp phích, lịch và thông báo; hoàn thành các nhiệm vụ viết, phiếu thông tin và bài tổng ôn.</p>
+<a class="btn" href="game-01/index.html" id="playLink">Chơi chiến dịch →</a>
 </section>
-<!-- Add published reading game cards here. Do not link to unfinished games. -->
 </main>
 <footer class="llg-footer" style="text-align:center;color:#597198;font:0.9rem system-ui,Arial,sans-serif;margin:28px auto 0;padding:0 16px 24px">Language Learning Games · #KhuongDo<div style="margin-top:12px"><a href="https://www.facebook.com/kunido/" target="_blank" rel="noopener noreferrer" style="color:#1877f2;text-decoration:none;font-weight:650">ⓕ Retrouvez-moi sur Facebook ↗</a></div></footer>
 </div>
-<div class="llg-analytics-settings" style="text-align:center;padding:6px 12px 20px"><button type="button" onclick="llgAnalyticsSettings()" style="background:transparent;border:0;text-decoration:underline;color:#47658d;cursor:pointer">Analytics preferences</button></div>
+<div class="llg-analytics-settings" style="text-align:center;padding:6px 12px 20px"><button type="button" id="analyticsSettings" onclick="llgAnalyticsSettings()" style="background:transparent;border:0;text-decoration:underline;color:#47658d;cursor:pointer">Tùy chọn phân tích</button></div>
+<script>
+(() => {
+  const key = 'delfA2Language';
+  const translations = {
+    vi: {
+      button: 'English', label: 'Chuyển ngôn ngữ sang tiếng Anh', title: 'DELF A2 · Đọc và viết tiếng Pháp · #KhuongDo',
+      description: 'Luyện đọc hiểu và viết tiếng Pháp trình độ A2 qua các trò chơi tương tác.',
+      subtitle: 'Đọc hiểu, viết và tiến bộ trong tiếng Pháp', nav: 'Điều hướng',
+      back: 'Tất cả trò chơi tiếng Pháp', status: 'Đã mở',
+      mission: 'Chiến dịch · Lễ hội ở Belle-Rive',
+      text: 'Sáu nhiệm vụ truyện kết hợp đọc hiểu và viết tiếng Pháp, kèm bài tổng ôn DELF A2 về đọc và viết. Có giao diện tiếng Việt và tiếng Anh.',
+      ready: 'Sẵn sàng giúp Belle-Rive tổ chức lễ hội?',
+      readyText: 'Đọc tin nhắn, áp phích, lịch và thông báo; hoàn thành các nhiệm vụ viết, phiếu thông tin và bài tổng ôn.',
+      play: 'Chơi chiến dịch →', analytics: 'Tùy chọn phân tích'
+    },
+    en: {
+      button: 'Tiếng Việt', label: 'Switch language to Vietnamese', title: 'DELF A2 · French reading and writing · #KhuongDo',
+      description: 'Practise A2 French reading and writing through interactive games.',
+      subtitle: 'Read, write, and make progress in French', nav: 'Navigation',
+      back: 'All French games', status: 'Available',
+      mission: 'Campaign · The Belle-Rive Festival',
+      text: 'Six story missions combine French reading and writing, followed by a DELF A2-style review of both skills. The interface is available in Vietnamese and English.',
+      ready: 'Ready to help Belle-Rive prepare for the festival?',
+      readyText: 'Read messages, posters, schedules, and notices; complete writing tasks, a form, and the final review.',
+      play: 'Play the campaign →', analytics: 'Analytics preferences'
+    }
+  };
+  let language = document.documentElement.lang === 'en' ? 'en' : 'vi';
+  const button = document.getElementById('languageToggle');
+  function applyLanguage() {
+    const t = translations[language];
+    document.documentElement.lang = language;
+    window.llgUpdateAnalyticsLanguage?.();
+    document.title = t.title;
+    document.querySelector('meta[name="description"]').content = t.description;
+    button.textContent = t.button;
+    button.setAttribute('aria-label', t.label);
+    document.getElementById('subtitle').textContent = t.subtitle;
+    document.getElementById('navigation').setAttribute('aria-label', t.nav);
+    document.getElementById('backLink').textContent = t.back;
+    document.getElementById('status').textContent = t.status;
+    document.getElementById('mission-title').textContent = t.mission;
+    document.getElementById('description').textContent = t.text;
+    document.getElementById('readyTitle').textContent = t.ready;
+    document.getElementById('readyText').textContent = t.readyText;
+    document.getElementById('playLink').textContent = t.play;
+    document.getElementById('analyticsSettings').textContent = t.analytics;
+  }
+  button.addEventListener('click', () => {
+    language = language === 'vi' ? 'en' : 'vi';
+    try {
+      localStorage.setItem(key, language);
+    } catch (error) {
+      console.warn('Unable to save the DELF A2 language preference.', error);
+    }
+    applyLanguage();
+  });
+  applyLanguage();
+})();
+</script>
 </body>
 </html>
